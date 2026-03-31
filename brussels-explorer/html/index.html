@@ -11,16 +11,28 @@
 <body>
 
     <header>
-        <h1 id="title-main-page">Brussels ontdekken</h1>
+        <h1 id="title-main-page">Brussel ontdekken</h1>
     </header>
 
 
 
     <main>
 
-        <section id="filter-options">
-            <button>A</button>
-            <button>B</button>
+        <section class="filter-options">
+
+            <section class="filter-option">
+                <label for="input-filter-postcode">Post-code:</label>
+                <input type="number" id="input-filter-postcode" placeholder="Ex. 1000">
+            </section>
+
+            <section class="filter-option">
+                <label for="input-filter-plaats">Plaats:</label>
+                <input type="text" id="input-filter-plaats" placeholder="Ex. Jette">
+
+            </section>
+
+            <button id="filter">Filtreer</button>
+
         </section>
 
         <section id="table-container">
