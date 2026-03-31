@@ -1,13 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/index.css">
 </head>
+
 <body>
-    
+
+    <header>
+        <h1 id="title-main-page">Brussels ontdekken</h1>
+    </header>
+
+
+
+    <main>
+
+        <section id="filter-options">
+            <button>A</button>
+            <button>B</button>
+        </section>
+
+        <section id="table-container">
+            <table id="table-content">
+                <thead>
+                    <tr class="head-row">
+                        <th>Maps</th>
+                        <th>Beschrijving</th>
+                        <th>Adres</th>
+                        <th>Post-code</th>
+                        <th>Plaats</th>
+                        <th>Link naar streetview</th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    <tr class="body-row">
+                        <td class="td-without-padding"><iframe width="450" height="250" style="border:0" loading="lazy"
+                                allowfullscreen src="https://www.google.com/maps?q=50.850714,4.3489&output=embed">
+                            </iframe></td>
+                        <td>Centrale for contemporary art (CENTRALE.box)</td>
+                        <td>Sint-Katelijneplein 44</td>
+                        <td>1000</td>
+                        <td>Brussel</td>
+                        <td class="street-view-button">
+                            <a target="_blank"
+                                href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=50.848361%2C4.350138">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960"
+                                    width="100px" fill="#e3e3e3">
+                                    <path
+                                        d="M578.5-578.5Q520-637 520-720t58.5-141.5Q637-920 720-920t141.5 58.5Q920-803 920-720t-58.5 141.5Q803-520 720-520t-141.5-58.5ZM144-144q-11-11-17.5-25t-6.5-31v-560q0-33 23.5-56.5T200-840h268q-14 27-21 57.5t-7 62.5q0 59 22 109.5t60 88.5L144-144Zm336 24v-216q0-42 25.5-75.5T572-454q35-8 72-12t76-4q32 0 61.5 2.5T840-460v260q0 33-23.5 56.5T760-120H480Z" />
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="body-row">
+                        <td class="td-without-padding"><iframe width="450" height="250" style="border:0" loading="lazy"
+                                allowfullscreen src="https://www.google.com/maps?q=50.850714,4.3489&output=embed">
+                            </iframe></td>
+                        <td>Centrale for contemporary art (CENTRALE.box)</td>
+                        <td>Sint-Katelijneplein 44</td>
+                        <td>1000</td>
+                        <td>Brussel</td>
+                        <td class="street-view-button">
+                            <a target="_blank"
+                                href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=50.848361%2C4.350138">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960"
+                                    width="100px" fill="#e3e3e3">
+                                    <path
+                                        d="M578.5-578.5Q520-637 520-720t58.5-141.5Q637-920 720-920t141.5 58.5Q920-803 920-720t-58.5 141.5Q803-520 720-520t-141.5-58.5ZM144-144q-11-11-17.5-25t-6.5-31v-560q0-33 23.5-56.5T200-840h268q-14 27-21 57.5t-7 62.5q0 59 22 109.5t60 88.5L144-144Zm336 24v-216q0-42 25.5-75.5T572-454q35-8 72-12t76-4q32 0 61.5 2.5T840-460v260q0 33-23.5 56.5T760-120H480Z" />
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="body-row">
+                        <td class="td-without-padding"><iframe width="450" height="250" style="border:0" loading="lazy"
+                                allowfullscreen src="https://www.google.com/maps?q=50.850714,4.3489&output=embed">
+                            </iframe></td>
+                        <td>Centrale for contemporary art (CENTRALE.box)</td>
+                        <td>Sint-Katelijneplein 44</td>
+                        <td>1000</td>
+                        <td>Brussel</td>
+                        <td class="street-view-button">
+                            <a target="_blank"
+                                href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=50.848361%2C4.350138">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960"
+                                    width="100px" fill="#e3e3e3">
+                                    <path
+                                        d="M578.5-578.5Q520-637 520-720t58.5-141.5Q637-920 720-920t141.5 58.5Q920-803 920-720t-58.5 141.5Q803-520 720-520t-141.5-58.5ZM144-144q-11-11-17.5-25t-6.5-31v-560q0-33 23.5-56.5T200-840h268q-14 27-21 57.5t-7 62.5q0 59 22 109.5t60 88.5L144-144Zm336 24v-216q0-42 25.5-75.5T572-454q35-8 72-12t76-4q32 0 61.5 2.5T840-460v260q0 33-23.5 56.5T760-120H480Z" />
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="body-row">
+                        <td class="td-without-padding"><iframe width="450" height="250" style="border:0" loading="lazy"
+                                allowfullscreen src="https://www.google.com/maps?q=50.850714,4.3489&output=embed">
+                            </iframe></td>
+                        <td>Centrale for contemporary art (CENTRALE.box)</td>
+                        <td>Sint-Katelijneplein 44</td>
+                        <td>1000</td>
+                        <td>Brussel</td>
+                        <td class="street-view-button">
+                            <a target="_blank"
+                                href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=50.848361%2C4.350138">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960"
+                                    width="100px" fill="#e3e3e3">
+                                    <path
+                                        d="M578.5-578.5Q520-637 520-720t58.5-141.5Q637-920 720-920t141.5 58.5Q920-803 920-720t-58.5 141.5Q803-520 720-520t-141.5-58.5ZM144-144q-11-11-17.5-25t-6.5-31v-560q0-33 23.5-56.5T200-840h268q-14 27-21 57.5t-7 62.5q0 59 22 109.5t60 88.5L144-144Zm336 24v-216q0-42 25.5-75.5T572-454q35-8 72-12t76-4q32 0 61.5 2.5T840-460v260q0 33-23.5 56.5T760-120H480Z" />
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="body-row">
+                        <td class="td-without-padding"><iframe width="450" height="250" style="border:0" loading="lazy"
+                                allowfullscreen src="https://www.google.com/maps?q=50.850714,4.3489&output=embed">
+                            </iframe></td>
+                        <td>Centrale for contemporary art (CENTRALE.box)</td>
+                        <td>Sint-Katelijneplein 44</td>
+                        <td>1000</td>
+                        <td>Brussel</td>
+                        <td class="street-view-button">
+                            <a target="_blank"
+                                href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=50.848361%2C4.350138">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960"
+                                    width="100px" fill="#e3e3e3">
+                                    <path
+                                        d="M578.5-578.5Q520-637 520-720t58.5-141.5Q637-920 720-920t141.5 58.5Q920-803 920-720t-58.5 141.5Q803-520 720-520t-141.5-58.5ZM144-144q-11-11-17.5-25t-6.5-31v-560q0-33 23.5-56.5T200-840h268q-14 27-21 57.5t-7 62.5q0 59 22 109.5t60 88.5L144-144Zm336 24v-216q0-42 25.5-75.5T572-454q35-8 72-12t76-4q32 0 61.5 2.5T840-460v260q0 33-23.5 56.5T760-120H480Z" />
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="body-row">
+                        <td class="td-without-padding"><iframe width="450" height="250" style="border:0" loading="lazy"
+                                allowfullscreen src="https://www.google.com/maps?q=50.850714,4.3489&output=embed">
+                            </iframe></td>
+                        <td>Centrale for contemporary art (CENTRALE.box)</td>
+                        <td>Sint-Katelijneplein 44</td>
+                        <td>1000</td>
+                        <td>Brussel</td>
+                        <td class="street-view-button">
+                            <a target="_blank"
+                                href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=50.848361%2C4.350138">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960"
+                                    width="100px" fill="#e3e3e3">
+                                    <path
+                                        d="M578.5-578.5Q520-637 520-720t58.5-141.5Q637-920 720-920t141.5 58.5Q920-803 920-720t-58.5 141.5Q803-520 720-520t-141.5-58.5ZM144-144q-11-11-17.5-25t-6.5-31v-560q0-33 23.5-56.5T200-840h268q-14 27-21 57.5t-7 62.5q0 59 22 109.5t60 88.5L144-144Zm336 24v-216q0-42 25.5-75.5T572-454q35-8 72-12t76-4q32 0 61.5 2.5T840-460v260q0 33-23.5 56.5T760-120H480Z" />
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="body-row">
+                        <td class="td-without-padding"><iframe width="450" height="250" style="border:0" loading="lazy"
+                                allowfullscreen src="https://www.google.com/maps?q=50.850714,4.3489&output=embed">
+                            </iframe></td>
+                        <td>Centrale for contemporary art (CENTRALE.box)</td>
+                        <td>Sint-Katelijneplein 44</td>
+                        <td>1000</td>
+                        <td>Brussel</td>
+                        <td class="street-view-button">
+                            <a target="_blank"
+                                href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=50.848361%2C4.350138">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960"
+                                    width="100px" fill="#e3e3e3">
+                                    <path
+                                        d="M578.5-578.5Q520-637 520-720t58.5-141.5Q637-920 720-920t141.5 58.5Q920-803 920-720t-58.5 141.5Q803-520 720-520t-141.5-58.5ZM144-144q-11-11-17.5-25t-6.5-31v-560q0-33 23.5-56.5T200-840h268q-14 27-21 57.5t-7 62.5q0 59 22 109.5t60 88.5L144-144Zm336 24v-216q0-42 25.5-75.5T572-454q35-8 72-12t76-4q32 0 61.5 2.5T840-460v260q0 33-23.5 56.5T760-120H480Z" />
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="body-row">
+                        <td class="td-without-padding"><iframe width="450" height="250" style="border:0" loading="lazy"
+                                allowfullscreen src="https://www.google.com/maps?q=50.850714,4.3489&output=embed">
+                            </iframe></td>
+                        <td>Centrale for contemporary art (CENTRALE.box)</td>
+                        <td>Sint-Katelijneplein 44</td>
+                        <td>1000</td>
+                        <td>Brussel</td>
+                        <td class="street-view-button">
+                            <a target="_blank"
+                                href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=50.848361%2C4.350138">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960"
+                                    width="100px" fill="#e3e3e3">
+                                    <path
+                                        d="M578.5-578.5Q520-637 520-720t58.5-141.5Q637-920 720-920t141.5 58.5Q920-803 920-720t-58.5 141.5Q803-520 720-520t-141.5-58.5ZM144-144q-11-11-17.5-25t-6.5-31v-560q0-33 23.5-56.5T200-840h268q-14 27-21 57.5t-7 62.5q0 59 22 109.5t60 88.5L144-144Zm336 24v-216q0-42 25.5-75.5T572-454q35-8 72-12t76-4q32 0 61.5 2.5T840-460v260q0 33-23.5 56.5T760-120H480Z" />
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="body-row">
+                        <td class="td-without-padding"><iframe width="450" height="250" style="border:0" loading="lazy"
+                                allowfullscreen src="https://www.google.com/maps?q=50.850714,4.3489&output=embed">
+                            </iframe></td>
+                        <td>Centrale for contemporary art (CENTRALE.box)</td>
+                        <td>Sint-Katelijneplein 44</td>
+                        <td>1000</td>
+                        <td>Brussel</td>
+                        <td class="street-view-button">
+                            <a target="_blank"
+                                href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=50.848361%2C4.350138">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960"
+                                    width="100px" fill="#e3e3e3">
+                                    <path
+                                        d="M578.5-578.5Q520-637 520-720t58.5-141.5Q637-920 720-920t141.5 58.5Q920-803 920-720t-58.5 141.5Q803-520 720-520t-141.5-58.5ZM144-144q-11-11-17.5-25t-6.5-31v-560q0-33 23.5-56.5T200-840h268q-14 27-21 57.5t-7 62.5q0 59 22 109.5t60 88.5L144-144Zm336 24v-216q0-42 25.5-75.5T572-454q35-8 72-12t76-4q32 0 61.5 2.5T840-460v260q0 33-23.5 56.5T760-120H480Z" />
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="body-row">
+                        <td class="td-without-padding"><iframe width="450" height="250" style="border:0" loading="lazy"
+                                allowfullscreen src="https://www.google.com/maps?q=50.850714,4.3489&output=embed">
+                            </iframe></td>
+                        <td>Centrale for contemporary art (CENTRALE.box)</td>
+                        <td>Sint-Katelijneplein 44</td>
+                        <td>1000</td>
+                        <td>Brussel</td>
+                        <td class="street-view-button">
+                            <a target="_blank"
+                                href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=50.848361%2C4.350138">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960"
+                                    width="100px" fill="#e3e3e3">
+                                    <path
+                                        d="M578.5-578.5Q520-637 520-720t58.5-141.5Q637-920 720-920t141.5 58.5Q920-803 920-720t-58.5 141.5Q803-520 720-520t-141.5-58.5ZM144-144q-11-11-17.5-25t-6.5-31v-560q0-33 23.5-56.5T200-840h268q-14 27-21 57.5t-7 62.5q0 59 22 109.5t60 88.5L144-144Zm336 24v-216q0-42 25.5-75.5T572-454q35-8 72-12t76-4q32 0 61.5 2.5T840-460v260q0 33-23.5 56.5T760-120H480Z" />
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="body-row">
+                        <td class="td-without-padding"><iframe width="450" height="250" style="border:0" loading="lazy"
+                                allowfullscreen src="https://www.google.com/maps?q=50.850714,4.3489&output=embed">
+                            </iframe></td>
+                        <td>Centrale for contemporary art (CENTRALE.box)</td>
+                        <td>Sint-Katelijneplein 44</td>
+                        <td>1000</td>
+                        <td>Brussel</td>
+                        <td class="street-view-button">
+                            <a target="_blank"
+                                href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=50.848361%2C4.350138">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960"
+                                    width="100px" fill="#e3e3e3">
+                                    <path
+                                        d="M578.5-578.5Q520-637 520-720t58.5-141.5Q637-920 720-920t141.5 58.5Q920-803 920-720t-58.5 141.5Q803-520 720-520t-141.5-58.5ZM144-144q-11-11-17.5-25t-6.5-31v-560q0-33 23.5-56.5T200-840h268q-14 27-21 57.5t-7 62.5q0 59 22 109.5t60 88.5L144-144Zm336 24v-216q0-42 25.5-75.5T572-454q35-8 72-12t76-4q32 0 61.5 2.5T840-460v260q0 33-23.5 56.5T760-120H480Z" />
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="body-row">
+                        <td class="td-without-padding"><iframe width="450" height="250" style="border:0" loading="lazy"
+                                allowfullscreen src="https://www.google.com/maps?q=50.850714,4.3489&output=embed">
+                            </iframe></td>
+                        <td>Centrale for contemporary art (CENTRALE.box)</td>
+                        <td>Sint-Katelijneplein 44</td>
+                        <td>1000</td>
+                        <td>Brussel</td>
+                        <td class="street-view-button">
+                            <a target="_blank"
+                                href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=50.848361%2C4.350138">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960"
+                                    width="100px" fill="#e3e3e3">
+                                    <path
+                                        d="M578.5-578.5Q520-637 520-720t58.5-141.5Q637-920 720-920t141.5 58.5Q920-803 920-720t-58.5 141.5Q803-520 720-520t-141.5-58.5ZM144-144q-11-11-17.5-25t-6.5-31v-560q0-33 23.5-56.5T200-840h268q-14 27-21 57.5t-7 62.5q0 59 22 109.5t60 88.5L144-144Zm336 24v-216q0-42 25.5-75.5T572-454q35-8 72-12t76-4q32 0 61.5 2.5T840-460v260q0 33-23.5 56.5T760-120H480Z" />
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="body-row">
+                        <td class="td-without-padding"><iframe width="450" height="250" style="border:0" loading="lazy"
+                                allowfullscreen src="https://www.google.com/maps?q=50.850714,4.3489&output=embed">
+                            </iframe></td>
+                        <td>Centrale for contemporary art (CENTRALE.box)</td>
+                        <td>Sint-Katelijneplein 44</td>
+                        <td>1000</td>
+                        <td>Brussel</td>
+                        <td class="street-view-button">
+                            <a target="_blank"
+                                href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=50.848361%2C4.350138">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960"
+                                    width="100px" fill="#e3e3e3">
+                                    <path
+                                        d="M578.5-578.5Q520-637 520-720t58.5-141.5Q637-920 720-920t141.5 58.5Q920-803 920-720t-58.5 141.5Q803-520 720-520t-141.5-58.5ZM144-144q-11-11-17.5-25t-6.5-31v-560q0-33 23.5-56.5T200-840h268q-14 27-21 57.5t-7 62.5q0 59 22 109.5t60 88.5L144-144Zm336 24v-216q0-42 25.5-75.5T572-454q35-8 72-12t76-4q32 0 61.5 2.5T840-460v260q0 33-23.5 56.5T760-120H480Z" />
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="body-row">
+                        <td class="td-without-padding"><iframe width="450" height="250" style="border:0" loading="lazy"
+                                allowfullscreen src="https://www.google.com/maps?q=50.850714,4.3489&output=embed">
+                            </iframe></td>
+                        <td>Centrale for contemporary art (CENTRALE.box)</td>
+                        <td>Sint-Katelijneplein 44</td>
+                        <td>1000</td>
+                        <td>Brussel</td>
+                        <td class="street-view-button">
+                            <a target="_blank"
+                                href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=50.848361%2C4.350138">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960"
+                                    width="100px" fill="#e3e3e3">
+                                    <path
+                                        d="M578.5-578.5Q520-637 520-720t58.5-141.5Q637-920 720-920t141.5 58.5Q920-803 920-720t-58.5 141.5Q803-520 720-520t-141.5-58.5ZM144-144q-11-11-17.5-25t-6.5-31v-560q0-33 23.5-56.5T200-840h268q-14 27-21 57.5t-7 62.5q0 59 22 109.5t60 88.5L144-144Zm336 24v-216q0-42 25.5-75.5T572-454q35-8 72-12t76-4q32 0 61.5 2.5T840-460v260q0 33-23.5 56.5T760-120H480Z" />
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+
+
+                </tbody>
+
+
+            </table>
+        </section>
+
+    </main>
+
+
+
+    <footer></footer>
+
+
+
+
 </body>
 
 <script type="module" src="../js/index.js"></script>
