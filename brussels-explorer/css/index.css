@@ -21,56 +21,107 @@ body {
     position: fixed;
     z-index: 10;
 
-    display: flex;
-    
-
     top: 0;
     background-color: rgba(0, 0, 0, 0.637);
     width: 100%;
     height: 100%;
-    display: flex;
+    display: none;
     justify-content: end;
     align-items: center;
 }
 
-.favorites-cover .favorites-list{
-  
-    
+.favorites-cover .favorites-list {
+
+
     display: flex;
     align-items: center;
     flex-direction: column;
     height: 100%;
     width: 600px;
     background-color: white;
-    
+
 }
 
-.card-favorite{
+.card-favorite {
     display: flex;
     gap: 75px;
-    
+
     margin: 40px;
     border: 1px solid black;
     border-radius: 30px;
     width: fit-content;
     padding: 15px;
 
-    .extra-info{
+    .extra-info {
         display: flex;
         flex-direction: column;
         gap: 10px;
     }
 
-    img{
+    img {
         height: 130px;
     }
-    
 
 
-    p{
+
+    p {
         margin: 0;
     }
 }
+
+.search-cover {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.637);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-search{
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 85%;
+    width: 85%;
+    background-color: white;
+    border-radius: 50px;
+    padding: 20px;
+    
+    
+    #search-bar{
+        font-size: 2rem;
+    }
+
+    #container-search-items{
+        background-color: red;
+        margin-top: 10px;
+        width: 90%;
+        height: 90%;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+
+  
+    
+}
+
+  .close-search{
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        border: 1px solid black;
+        border-radius: 50%;
+    }
+
+    .close-search:hover{
+        background-color: silver;
+        cursor: pointer;
+    }
 
 header {
 
@@ -117,20 +168,20 @@ main {
             flex-direction: column;
         }
 
-        #filter {
+        .button-in-filter {
             border-radius: 15px;
             border: 1px solid black;
             padding: 10px;
             transition: 40ms;
         }
 
-        #filter:hover {
+        .button-in-filter:hover {
             background-color: rgb(211, 211, 211);
             cursor: pointer;
             transform: translateY(-2px)
         }
 
-        #filter:active {
+        .button-in-filter:active {
             background-color: silver;
             transform: scale(0.95)
         }
