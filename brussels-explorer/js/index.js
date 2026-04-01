@@ -24,6 +24,13 @@ const fetchData = async () => {
 
 
 
+const data = await fetchData();
+if (!data) {
+  throw new Error("No data available");
+}
+const allLocations = data.results;
+
+
 const updateMainList = (arrayResults) => {
   const sectionCardContainer = document.getElementById("table-container");
   sectionCardContainer.innerHTML = "";
@@ -95,6 +102,7 @@ const updateMainList = (arrayResults) => {
   }
 };
 
+
 const makeSearchCover = (callback) => {
   const searchCover = document.createElement("section");
   searchCover.classList.add("search-cover");
@@ -126,6 +134,7 @@ const makeSearchCover = (callback) => {
 
   svg.addEventListener("click", () => {
     searchCover.remove();
+ 
   });
 
   article.appendChild(svg);
@@ -154,6 +163,14 @@ const makeSearchCover = (callback) => {
   input.type = "search";
   input.id = "search-bar";
 
+
+    
+  input.addEventListener('input',() =>{
+
+    const newArrayLocations = allLocations.filter(location => location.beschrijving.toLowerCase().includes(input.value.toLowerCase()))    // array method, filtert alle objecten waarvan de beschrijving niet gelijk is aan input
+    updateLijstInSearchCover(newArrayLocations)
+  })
+
   article.appendChild(label);
   article.appendChild(input);
 
@@ -167,10 +184,12 @@ const makeSearchCover = (callback) => {
   callback();
 
 
+
 };
 
 const updateLijstInSearchCover = (arrayLocations) => {
   const container = document.getElementById('container-search-items')
+  container.innerHTML="";
 
   for(let locatie of arrayLocations){
         const lat = locatie.coordonnees_geographiques.lat;
@@ -247,47 +266,40 @@ const observer = new IntersectionObserver((entries) => {
 }, {threshold: 0.1,   // laad wanneer 10% van de iframe zichtbaar is
   rootMargin: "200px"}); //laad de iframe wanneer het 200px van de beeld is
 
+updateMainList(allLocations); // laad de main pagina met alle objecten
+
 
 const buttonResetFilter = document.getElementById("reset-filter");
-buttonResetFilter.addEventListener("click", async () => {
-
-
-  const data = await fetchData();
-  if (!data) return;
-  let arrayResults = data.results;
+buttonResetFilter.addEventListener("click", () => {
 
   const inputFilter = document.getElementById("input-filter-postcode");
   inputFilter.value = "";
-  updateMainList(arrayResults);
+  updateMainList(allLocations);
 });
+
+
 
 const buttonOpzoeken = document.getElementById("search-button");
-buttonOpzoeken.addEventListener("click", async () => {
+buttonOpzoeken.addEventListener("click", () => {
 
-  const data = await fetchData();
-  if (!data) return;
-  let arrayResults = data.results;
-
-  makeSearchCover(() => updateLijstInSearchCover(arrayResults))
+  makeSearchCover(() => updateLijstInSearchCover(allLocations)) 
+  
 });
+
+
+
 
 let inputFiltervalue = document.getElementById("input-filter-postcode");
 const filterbutton = document.getElementById("filter");
 
-filterbutton.addEventListener("click", async () => {
+filterbutton.addEventListener("click", () => {
   let input = inputFiltervalue.value;
 
   const resultList = [];
 
-  const data = await fetchData();
-  if (!data) return;
-  let arrayResults = data.results;
-
-  console.log(arrayResults);
-
-  for (let element of arrayResults) {
+  for (let element of allLocations) {
     if (input == element.code_postal) {
-      console.log(element.code_postal);
+     
       resultList.push(element);
     }
   }
@@ -295,10 +307,4 @@ filterbutton.addEventListener("click", async () => {
   updateMainList(resultList);
 });
 
-document.addEventListener("DOMContentLoaded", async () => {
-  const data = await fetchData();
-  if (!data) return;
-  let arrayResults = data.results;
 
-  updateMainList(arrayResults);
-});
