@@ -32,7 +32,7 @@ const fetchData = async () => {
   }
 };
 
-
+// sfg 
 
 
 let data = await fetchData();
