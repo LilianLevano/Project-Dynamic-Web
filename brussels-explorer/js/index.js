@@ -8,10 +8,19 @@ const fetchData = async () => {
            }
            const data = await res.json()
            console.log(data);
+           return data;
+           
            
     } catch (error) {
         
     }
 }
 
-fetchData()
+document.addEventListener('DOMContentLoaded', async ()=>{
+    
+    const data = await fetchData();
+    console.log(data);
+    
+
+
+})
