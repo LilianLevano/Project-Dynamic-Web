@@ -14,6 +14,22 @@ const fetchData = async () => {
   } catch (error) {}
 };
 
+const buttonOpzoeken = document.getElementById('search-button')
+buttonOpzoeken.addEventListener('click', ()=>{
+
+    const searchCover = document.createElement('section')
+    searchCover.classList.add('search-cover')
+    document.body.appendChild(searchCover)
+
+    
+
+})
+
+
+
+
+
+
 let inputFiltervalue = document.getElementById("input-filter-postcode").value;
 
 inputFiltervalue = Number(inputFiltervalue);
