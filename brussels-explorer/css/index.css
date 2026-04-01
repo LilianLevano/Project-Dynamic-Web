@@ -106,12 +106,46 @@ body {
     }
 
     #container-search-items{
-        background-color: red;
+     
         margin-top: 10px;
         width: 90%;
         height: 90%;
         overflow: scroll;
         overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px;
+        gap: 40px;
+
+        .card{
+            display: flex;
+            justify-content: flex-start;
+            gap: 100px;
+            
+
+            padding: 30px;
+            border-radius: 25px;
+            display: flex;
+            justify-content: space-around;
+            box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.473);
+            transition: 60ms;
+            align-items: center;
+        }
+
+        .card:hover{
+            transform: translateY(-5px);
+            box-shadow: 5px 5px 10px rgb(0, 0, 0);
+        }
+        
+
+        .informatie-text{
+            text-align: center;
+            max-width: 194px;
+            h2{
+                max-width: 164px ;
+            }
+        }
     }
 
   
@@ -240,6 +274,7 @@ main {
         
 
     }
+<<<<<<< HEAD
 
 }
 
@@ -249,3 +284,5 @@ main {
         flex-direction: column;
     }
 }
+=======
+>>>>>>> c89786ab022f91fa61512d525faf3fc4a9eab731
