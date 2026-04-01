@@ -9,7 +9,7 @@ const fetchData = async () => {
       throw new Error("could not fetch");
     }
     const data = await res.json();
-    console.log(data);
+
     return data;
   } catch (error) {}
 };
@@ -30,23 +30,52 @@ buttonOpzoeken.addEventListener('click', ()=>{
 
 
 
-let inputFiltervalue = document.getElementById("input-filter-postcode").value;
+let inputFiltervalue = document.getElementById("input-filter-postcode");
 
-inputFiltervalue = Number(inputFiltervalue);
+
 
 const filterbutton = document.getElementById("filter");
 
 
 filterbutton.addEventListener("click", async () => {
+  let input = inputFiltervalue.value
 
+  const resultList = []
   const data = await fetchData();
-  
-  data.results.forEach((element) => {
 
-    if (inputFiltervalue === element.code_postal) {
-      console.log(element);
+
+  let arrayResults = data.results;
+
+  console.log(arrayResults);
+  
+  for(let element of arrayResults){
+    
+// console.log(input);
+// console.log(element.code_postal)
+        if (input == element.code_postal ) {
+                console.log(element.code_postal);
+            
+            resultList.push(element)
+            updateMainList(resultList)
+   
+      
     }
-  });
+    
+  }
+  
+
+  // data.results.forEach((element) => {
+
+
+  //   if (input == element.code_postal ) {
+  //     console.log(element);
+      
+  //     resultList.push(element)
+  //     updateMainList(resultList)
+  //     console.log(resultList);
+      
+  //   }
+  // });
 
 });
     
@@ -130,11 +159,5 @@ document.addEventListener('DOMContentLoaded', async ()=>{
     const arrayResults = data.results 
 
     updateMainList(arrayResults);
-
-    
-    
-  
-    
-
 
 })
