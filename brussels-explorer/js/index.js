@@ -289,6 +289,18 @@ const updateLijstInSearchCover = (arrayLocations) => {
 
 }
 
+const checkLocalStorage = () =>{
+
+  if(localStorage.getItem('taal') === null){
+    localStorage.setItem('taal', 'nl')
+  }
+
+  if(localStorage.getItem('favorites') === null){
+    localStorage.setItem('favorites', JSON.stringify([]))
+  }
+
+}
+
 // een observer om ervoor te zorgen dat alle iframes enkel geladen en actief zijn wanneer ze in beeld treden.
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
