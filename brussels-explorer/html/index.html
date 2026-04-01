@@ -39,13 +39,14 @@
                     <p>Sint-Katelijneplein 44 <span id="postcode">1000</span></p>
                     <p>Brussel</p>
                     <p>streetview</p>
+                    
                 </div>
             </article>
 
         </article>
     </section>
 
-    <section class="search-cover">
+    <section class="search-cover inactive" id="card-search">
 
 
 
@@ -93,13 +94,44 @@
             </section>
 
             <button class="button-in-filter" id="filter">Filtreer</button>
-            <button class="button-in-filter">Een locatie opzoeken</button>
+            <button class="button-in-filter" id="search-button">Een locatie opzoeken</button>
         </section>
 
 
 
         <section id="table-container">
-            <table id="table-content">
+
+            <article class="card">
+                <iframe allow="accelerometer; gyroscope" width="450" height="350"
+                    src="https://www.google.com/maps?q=&amp;layer=c&amp;cbll=50.855333,4.351715&amp;cbp=11,0,0,0,0&amp;output=svembed"
+                    style="border: 0px;" allowfullscreen></iframe>
+
+                    <div class="informatie-text">
+                        <h2>Centrale for contemporary art (CENTRALE.box)</h2>
+                        <p>Sint-Katelijneplein 44, <span>1000</span></p>
+                        <p>Brussel</p>
+                        <p>50.850714, 4.3489</p>g
+                    </div>
+
+                    <iframe width="300" height="250" style="border:0" loading="lazy" allowfullscreen=""
+                                src="https://www.google.com/maps?q=50.850714,4.3489&output=embed">
+                            </iframe>
+
+            </article>
+
+            <article class="card">
+
+            </article>
+
+            <article class="card">
+
+                <iframe src="" frameborder="0"></iframe>
+
+            </article>
+
+
+
+            <!-- <table id="table-content">
                 <thead>
                     <tr class="head-row">
                         <th>Street view</th>
@@ -120,7 +152,7 @@
                         <td>Sint-Katelijneplein 44</td>
                         <td>1000</td>
                         <td>Brussel</td>
-                        <td class="street-view-button">
+                        <td class="td-without-padding">
                             <iframe width="250" height="250" style="border:0" loading="lazy" allowfullscreen=""
                                 src="https://www.google.com/maps?q=50.850714,4.3489&output=embed">
                             </iframe>
@@ -134,7 +166,7 @@
                 </tbody>
 
 
-            </table>
+            </table> -->
         </section>
 
     </main>

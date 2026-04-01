@@ -79,7 +79,10 @@ body {
     display: none;
     justify-content: center;
     align-items: center;
+
+
 }
+
 
 .card-search{
     position: relative;
@@ -156,6 +159,7 @@ main {
 
 
 
+
     .filter-options {
         display: flex;
         gap: 50px;
@@ -197,9 +201,34 @@ main {
 
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
+        gap: 50px;
 
 
-        #table-content {
+
+        .card{
+            height: 400px;
+            width: 1000px;
+           
+            padding: 30px;
+            border-radius: 25px;
+            display: flex;
+            justify-content: center;
+            box-shadow: 5px 5px 10px black;
+            transition: 60ms;
+            align-items: center;
+        }
+
+        .card:hover{
+            transform: translateY(-5px);
+        }
+
+        .informatie-text{
+            text-align: center;
+        }
+
+
+        /* #table-content {
 
 
             max-width: 1000px;
@@ -228,7 +257,10 @@ main {
                     border-radius: 15px;
                 }
 
-            }
+            } */
+
+
+
 
 
 
@@ -237,4 +269,3 @@ main {
 
     }
 
-}
