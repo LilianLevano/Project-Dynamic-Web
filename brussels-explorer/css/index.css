@@ -214,12 +214,12 @@ main {
 
         .card{
             height: 400px;
-            width: 1000px;
+            width: 1200px;
            
             padding: 30px;
             border-radius: 25px;
             display: flex;
-            justify-content: center;
+            justify-content: space-around;
             box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.473);
             transition: 60ms;
             align-items: center;
