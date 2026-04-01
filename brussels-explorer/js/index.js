@@ -31,6 +31,8 @@ if (!data) {
 const allLocations = data.results;
 
 
+// functie om de lijst van locaties op de main pagina up te daten. Het wordt bij het laden van de site automatisch opgeroept.
+
 const updateMainList = (arrayResults) => {
   const sectionCardContainer = document.getElementById("table-container");
   sectionCardContainer.innerHTML = "";
@@ -102,7 +104,8 @@ const updateMainList = (arrayResults) => {
   }
 };
 
-
+// functie om de search cover aan te maken.
+// deze functie doet een callback naar een andere functie, namelijk die om de lijst van locaties hiervan up te daten.
 const makeSearchCover = (callback) => {
   const searchCover = document.createElement("section");
   searchCover.classList.add("search-cover");
@@ -187,6 +190,7 @@ const makeSearchCover = (callback) => {
 
 };
 
+//functie om de locaties in de seach lijst up te daten.
 const updateLijstInSearchCover = (arrayLocations) => {
   const container = document.getElementById('container-search-items')
   container.innerHTML="";
@@ -249,6 +253,7 @@ const updateLijstInSearchCover = (arrayLocations) => {
 
 }
 
+// een observer om ervoor te zorgen dat alle iframes enkel geladen en actief zijn wanneer ze in beeld treden.
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     // voor elke item die we in de observer hebben gezet
@@ -299,7 +304,6 @@ filterbutton.addEventListener("click", () => {
 
   for (let element of allLocations) {
     if (input == element.code_postal) {
-     
       resultList.push(element);
     }
   }
