@@ -14,6 +14,16 @@ const fetchData = async () => {
   } catch (error) {}
 };
 
+const buttonResetFilter = document.getElementById('reset-filter')
+buttonResetFilter.addEventListener('click', async ()=>{
+    const data = await fetchData();
+    const arrayResults = data.results 
+    const inputFilter = document.getElementById('input-filter-postcode')
+    inputFilter.value = "";
+
+    updateMainList(arrayResults);
+})
+
 const buttonOpzoeken = document.getElementById('search-button')
 buttonOpzoeken.addEventListener('click', ()=>{
 
