@@ -2,8 +2,19 @@
 
 const fetchData = async () => {
   try {
+
+    let taal;
+
+    if(localStorage.getItem('taal') == "fr"){
+      taal = "fr"
+    }else{
+      taal = "nl"
+    }
+
+    const url = `https://opendata.brussels.be/api/explore/v2.1/catalog/datasets/bruxelles_lieux_culturels/records?limit=30&lang=${taal}`
+
     const res = await fetch(
-      "https://opendata.brussels.be/api/explore/v2.1/catalog/datasets/bruxelles_lieux_culturels/records?limit=20",
+      url,
     );
 
     !res.ok
@@ -24,12 +35,37 @@ const fetchData = async () => {
 
 
 
-const data = await fetchData();
+let data = await fetchData();
 if (!data) {
   throw new Error("No data available");
 }
-const allLocations = data.results;
+let allLocations = data.results;
 
+
+const checkLanguage = () =>{
+
+  const language = localStorage.getItem('taal')
+
+  const labelForInputFilterPostcode = document.getElementById('label-input-filter-postcode')
+  const titelWebpagina = document.getElementById('title-main-page')
+  const buttonFilter = document.getElementById('filter')
+  const searchButton = document.getElementById('search-button')
+
+  if(language == "fr"){
+    labelForInputFilterPostcode.textContent = "Code Postale:"
+    titelWebpagina.textContent = "Découvrez Bruxelles"
+    buttonFilter.textContent = "Filtrer"
+    searchButton.textContent = "Recherchez une location"
+  }else{
+    labelForInputFilterPostcode.textContent = "Post-code:"
+    titelWebpagina.textContent = "Brussel Ontdekken"
+    buttonFilter.textContent = "Filtreren"
+    searchButton.textContent = "Een locatie opzoeken"
+  }
+
+}
+
+checkLanguage();
 
 // functie om de lijst van locaties op de main pagina up te daten. Het wordt bij het laden van de site automatisch opgeroept.
 
@@ -63,11 +99,11 @@ const updateMainList = (arrayResults) => {
     divInformatieText.classList.add("informatie-text");
 
     const beschrijvingLocatie = document.createElement("h2");
-    beschrijvingLocatie.textContent = locatie.beschrijving;
+    beschrijvingLocatie.textContent = locatie.beschrijving || locatie.description;
     divInformatieText.appendChild(beschrijvingLocatie);
 
     const adres = document.createElement("p");
-    adres.textContent = locatie.adres + ", ";
+    adres.textContent = locatie.adres || locatie.adresse + ", ";
     divInformatieText.appendChild(adres);
 
     const postCode = document.createElement("span");
@@ -75,7 +111,7 @@ const updateMainList = (arrayResults) => {
     adres.appendChild(postCode);
 
     const plaats = document.createElement("p");
-    plaats.textContent = locatie.plaats;
+    plaats.textContent = locatie.plaats || locatie.lieu;
     divInformatieText.appendChild(plaats);
 
     const geolocatie = document.createElement("p");
@@ -221,11 +257,11 @@ const updateLijstInSearchCover = (arrayLocations) => {
     divInformatieText.classList.add("informatie-text");
 
     const beschrijvingLocatie = document.createElement("h2");
-    beschrijvingLocatie.textContent = locatie.beschrijving;
+    beschrijvingLocatie.textContent = locatie.beschrijving || locatie.description;
     divInformatieText.appendChild(beschrijvingLocatie);
 
     const adres = document.createElement("p");
-    adres.textContent = locatie.adres + ", ";
+    adres.textContent = locatie.adres || locatie.adresse + ", ";
     divInformatieText.appendChild(adres);
 
     const postCode = document.createElement("span");
@@ -233,7 +269,7 @@ const updateLijstInSearchCover = (arrayLocations) => {
     adres.appendChild(postCode);
 
     const plaats = document.createElement("p");
-    plaats.textContent = locatie.plaats;
+    plaats.textContent = locatie.plaats || locatie.lieu;
     divInformatieText.appendChild(plaats);
 
     const geolocatie = document.createElement("p");
@@ -311,4 +347,19 @@ filterbutton.addEventListener("click", () => {
   updateMainList(resultList);
 });
 
+
+
+const buttonTalen = document.querySelectorAll('.language-button')
+
+for(let button of buttonTalen){
+  button.addEventListener('click', async ()=>{
+    localStorage.setItem('taal', button.value)
+    data = await fetchData();
+    allLocations = data.results;
+    updateMainList(allLocations)
+    checkLanguage();
+
+    
+  })
+}
 
