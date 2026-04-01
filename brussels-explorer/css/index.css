@@ -214,13 +214,14 @@ main {
             border-radius: 25px;
             display: flex;
             justify-content: center;
-            box-shadow: 5px 5px 10px black;
+            box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.473);
             transition: 60ms;
             align-items: center;
         }
 
         .card:hover{
             transform: translateY(-5px);
+            box-shadow: 5px 5px 10px rgb(0, 0, 0);
         }
 
         .informatie-text{
