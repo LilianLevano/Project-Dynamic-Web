@@ -42,11 +42,20 @@ Link naar API: https://opendata.brussels.be/explore/dataset/bruxelles_lieux_cult
 
 ## Gebruikte bronnen          (Samen)
 
-## Taakverdeling             (Lilian)
+ChatGPT om CSS gerelateerde problemen op te lossen en problemen die vanuit concepten komen die we niet in de les hebben behandeld (bijvoorbeeld WebGL). 
+- https://chatgpt.com/share/69ce71f5-aedc-8389-82aa-fae332f9ce58
+- https://chatgpt.com/share/69ce720d-771c-8385-a2df-b5cafc041092
+- https://chatgpt.com/share/69ce72d1-75ac-8395-b661-700861224aef --> De API stuurt een link naar Google Street View die we niet in Iframes kunnen gebruiken, waardoor we een link moest zoeken die we wel konden gebruiken waar we de geolocalisatie gebruiken, wat voor veel WebGL errors en warnings zorgde.
+
+Unsplash voor de background header (https://unsplash.com/fr/photos/portail-en-beton-brun-m39OKAexaqo)
+
+Google Icons and Fonts voor de verschillende SVG's en Fonts.
+
+## Taakverdeling 
 
 | Dag       | Lilian                                                                 | Bilal                                                                 | Samen                                      |
 |-----------|------------------------------------------------------------------------|----------------------------------------------------------------------|-------------------------------------------|
 | Dinsdag   | Basis HTML en CSS aanleggen (met placeholder)                         | API mogelijkheden opzoeken (hoe werkt de url, ...)                  | User stories / backlog <br> Opmaak website brainstormen                   |
-| Woensdag  | Verwerk data in de lijst <br> Zoekmethode opstellen                  | Fetch API + JSON <br> Filter optie <br> Responsive design           | Github samen leren (voormiddag)           |
+| Woensdag  | Verwerk data in de lijst <br> Zoekmethode opstellen <br> Taalsysteem                  | Fetch API + JSON <br> Filter optie <br> Responsive design           | Github samen leren (voormiddag), Observer API bespreken en aanmaken           |
 | Donderdag | Favoriete locaties (localStorage) <br> Formulier validatie            | Responsive design <br> Sorteer mogelijkheid <br> Foutmeldingen       | Commentaar, backlog afwerken, README <br> Samen denken op hoe we de code clean kunnen maken    |
 | Vrijdag   |                                                                        |                                                                      | README afmaken, laatste details checken                            |
