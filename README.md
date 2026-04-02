@@ -1,4 +1,4 @@
-# Project Dynamic Web - Webapplicatie
+# Project Dynamic Web - BrusselsExplorer
 
 ## Projectbeschrijving en functionaliteiten    (Bilal)
 
