@@ -307,7 +307,7 @@ main {
         text-align: center;
     }
 
-    #table-container .card {
+    .card {
         flex-direction: column;
         height: auto !important ;
         width: 90%;
@@ -380,4 +380,8 @@ main {
         font-size: 0.9rem;
     }
     
+    .close-search{
+        width: 30px;
+        height: 30px;
+    }
 }
