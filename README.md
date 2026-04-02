@@ -2,7 +2,11 @@
 
 Personen die aan dit project hebben gewerkt: Lilian Levano, Bilal Benhammou
 
-## Projectbeschrijving en functionaliteiten    (Bilal)
+## Projectbeschrijving en functionaliteiten  
+
+Ontdekkingstocht door Brussel – Een interactieve webapplicatie voor het verkennen van culturele locaties in Brussel met behulp van open data.
+
+Dit project is gemaakt in het kader van het vak Dynamic Web aan Erasmus Hogeschool Brussel. Het is een groepsproject waarbij we een volledig functionele, dynamische webapplicatie hebben gebouwd die gebruikmaakt van echte overheidsdata.
 
 ## Gebruikte API's met links
 
@@ -41,6 +45,8 @@ Link naar API: https://opendata.brussels.be/explore/dataset/bruxelles_lieux_cult
 3. Open index.html
 
 ## Screenshots van de applicatie    (Bilal)
+
+![home pagina](/brussels-explorer/images/screenshots_readme/homepage.png)
 
 ## Gebruikte bronnen          (Samen)
 
