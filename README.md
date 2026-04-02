@@ -44,9 +44,14 @@ Link naar API: https://opendata.brussels.be/explore/dataset/bruxelles_lieux_cult
 2. Zet deze eigen folder op een server (bv. Live Server met VS-Code)
 3. Open index.html
 
-## Screenshots van de applicatie    (Bilal)
+## Screenshots van de applicatie  
 
 ![home pagina](/brussels-explorer/images/screenshots_readme/homepage.png)
+![home pagina in fr](/brussels-explorer/images/screenshots_readme/homepage_fr.png)
+![search venster](/brussels-explorer/images/screenshots_readme/search_optie.png)
+![mobile versie](/brussels-explorer/images/screenshots_readme/homepage_mobil_version.png)
+![artikels scrolling](/brussels-explorer/images/screenshots_readme/artikels_scrolling.png)
+![favoriete vensters](/brussels-explorer/images/screenshots_readme/favorite_venster.png)
 
 ## Gebruikte bronnen          (Samen)
 
