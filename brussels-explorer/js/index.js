@@ -2,26 +2,24 @@
 
 const fetchData = async (withAllLanguage = false) => {
   try {
-
     let taal;
 
-    if(localStorage.getItem('taal') == "fr"){
-      taal = "fr"
-    }else{
-      taal = "nl"
+    if (localStorage.getItem("taal") == "fr") {
+      taal = "fr";
+    } else {
+      taal = "nl";
     }
 
     let url;
 
-    if(withAllLanguage){
-      url ="https://opendata.brussels.be/api/explore/v2.1/catalog/datasets/bruxelles_lieux_culturels/records?limit=30"
-    }else{
-      url =  `https://opendata.brussels.be/api/explore/v2.1/catalog/datasets/bruxelles_lieux_culturels/records?limit=30&lang=${taal}`
+    if (withAllLanguage) {
+      url =
+        "https://opendata.brussels.be/api/explore/v2.1/catalog/datasets/bruxelles_lieux_culturels/records?limit=30";
+    } else {
+      url = `https://opendata.brussels.be/api/explore/v2.1/catalog/datasets/bruxelles_lieux_culturels/records?limit=30&lang=${taal}`;
     }
 
-    const res = await fetch(
-      url,
-    );
+    const res = await fetch(url);
 
     !res.ok
       ? (() => {
@@ -38,11 +36,10 @@ const fetchData = async (withAllLanguage = false) => {
   }
 };
 
-// sfg 
+// sfg
 
-
-if(localStorage.getItem('favorites' === null)){
-  localStorage.setItem('favorites', JSON.stringify([]))
+if (localStorage.getItem("favorites" === null)) {
+  localStorage.setItem("favorites", JSON.stringify([]));
 }
 
 const withAllLanguage = true;
@@ -51,44 +48,45 @@ if (!data) {
   throw new Error("No data available");
 }
 let allLocations = data.results;
-let i = 1
+let i = 1;
 
-for(let locatie of allLocations){
-  locatie.id = i
-  i++
+for (let locatie of allLocations) {
+  locatie.id = i;
+  i++;
 }
 
 console.log(allLocations);
 
+const checkLanguage = () => {
+  const language = localStorage.getItem("taal");
 
-const checkLanguage = () =>{
+  const labelForInputFilterPostcode = document.getElementById(
+    "label-input-filter-postcode",
+  );
+  const titelWebpagina = document.getElementById("title-main-page");
+  const buttonFilter = document.getElementById("filter");
+  const searchButton = document.getElementById("search-button");
 
-  const language = localStorage.getItem('taal')
-
-  const labelForInputFilterPostcode = document.getElementById('label-input-filter-postcode')
-  const titelWebpagina = document.getElementById('title-main-page')
-  const buttonFilter = document.getElementById('filter')
-  const searchButton = document.getElementById('search-button')
-
-  if(language == "fr"){
-    labelForInputFilterPostcode.textContent = "Code Postale:"
-    titelWebpagina.textContent = "Découvrez Bruxelles"
-    buttonFilter.textContent = "Filtrer"
-    searchButton.textContent = "Recherchez une location"
-  }else{
-    labelForInputFilterPostcode.textContent = "Post-code:"
-    titelWebpagina.textContent = "Brussel Ontdekken"
-    buttonFilter.textContent = "Filtreren"
-    searchButton.textContent = "Een locatie opzoeken"
+  if (language == "fr") {
+    labelForInputFilterPostcode.textContent = "Code Postale:";
+    titelWebpagina.textContent = "Découvrez Bruxelles";
+    buttonFilter.textContent = "Filtrer";
+    searchButton.textContent = "Recherchez une location";
+  } else {
+    labelForInputFilterPostcode.textContent = "Post-code:";
+    titelWebpagina.textContent = "Brussel Ontdekken";
+    buttonFilter.textContent = "Filtreren";
+    searchButton.textContent = "Een locatie opzoeken";
   }
-
-}
+};
 
 checkLanguage();
 
 // functie om de lijst van locaties op de main pagina up te daten. Het wordt bij het laden van de site automatisch opgeroept.
 
 const updateMainList = (arrayResults) => {
+  console.log(arrayResults);
+
   const sectionCardContainer = document.getElementById("table-container");
   sectionCardContainer.innerHTML = "";
 
@@ -99,52 +97,48 @@ const updateMainList = (arrayResults) => {
     const card = document.createElement("article");
     card.classList.add("card");
 
-    
+    const ns = "http://www.w3.org/2000/svg";
 
-      const ns = "http://www.w3.org/2000/svg";
+    const svgFavorite = document.createElementNS(ns, "svg");
+    svgFavorite.setAttribute("xmlns", ns);
+    svgFavorite.setAttribute("height", "35px");
+    svgFavorite.setAttribute("width", "35px");
+    svgFavorite.setAttribute("viewBox", "0 -960 960 960");
+    svgFavorite.setAttribute("fill", "#e3e3e3");
+    svgFavorite.classList.add("add-favorite");
+    svgFavorite.setAttribute("value", locatie.id);
 
-  
-  const svgFavorite = document.createElementNS(ns, "svg");
-  svgFavorite.setAttribute("xmlns", ns);
-  svgFavorite.setAttribute("height", "35px");
-  svgFavorite.setAttribute("width", "35px");
-  svgFavorite.setAttribute("viewBox", "0 -960 960 960");
-  svgFavorite.setAttribute("fill", "#e3e3e3");
-  svgFavorite.classList.add("close-search");
-  svgFavorite.setAttribute('value', locatie.id)
+    const path = document.createElementNS(ns, "path");
 
-
-  const path = document.createElementNS(ns, "path");
-  path.setAttribute(
-    "d",
-    "m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z",
-  );
-
-
-  svgFavorite.appendChild(path);
-  card.append(svgFavorite)
-
-  svgFavorite.addEventListener("click", () => {
-    
-    let arrayFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-
-
-    if(arrayFavorites.includes(locatie.id)){
-      alert('That location is already in your favorites.')
-    }else{
-      
-      arrayFavorites.push(locatie.id)
-   
-    localStorage.setItem('favorites', JSON.stringify(arrayFavorites))
+    if (JSON.parse(localStorage.getItem("favorites")).includes(locatie.id)) {
+      path.setAttribute(
+        "d",
+        "m480-120.67-46.67-42q-104.33-95-172.33-164-68-69-108.33-123.5-40.34-54.5-56.5-99.16Q80-594 80-640q0-91.33 61.33-152.67 61.34-61.33 152-61.33 55.34 0 103.34 25.33 48 25.34 83.33 72.67 39.33-49.33 86.33-73.67 47-24.33 100.34-24.33 90.66 0 152 61.33Q880-731.33 880-640q0 46-16.17 90.67-16.16 44.66-56.5 99.16Q767-395.67 699-326.67t-172.33 164l-46.67 42Z",
+      );
+      svgFavorite.setAttribute("fill", "#ff0000");
+    } else {
+      path.setAttribute(
+        "d",
+        "m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z",
+      );
     }
 
+    svgFavorite.appendChild(path);
+    card.append(svgFavorite);
 
-    console.log(localStorage.getItem('favorites'));
-  
-    
- 
-  });
+    svgFavorite.addEventListener("click", () => {
+      let arrayFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
+      if (arrayFavorites.includes(locatie.id)) {
+        alert("That location is already in your favorites.");
+      } else {
+        arrayFavorites.push(locatie.id);
+
+        localStorage.setItem("favorites", JSON.stringify(arrayFavorites));
+      }
+
+      console.log(localStorage.getItem("favorites"));
+    });
 
     const iframe = document.createElement("iframe");
     // zet de echte source in dataset.src om ervoor te zorgen dat die op een lazy manier worden geladen met een observer
@@ -165,7 +159,8 @@ const updateMainList = (arrayResults) => {
     divInformatieText.classList.add("informatie-text");
 
     const beschrijvingLocatie = document.createElement("h2");
-    beschrijvingLocatie.textContent = locatie.beschrijving || locatie.description;
+    beschrijvingLocatie.textContent =
+      locatie.beschrijving || locatie.description;
     divInformatieText.appendChild(beschrijvingLocatie);
 
     const adres = document.createElement("p");
@@ -239,7 +234,6 @@ const makeSearchCover = (callback) => {
 
   svg.addEventListener("click", () => {
     searchCover.remove();
- 
   });
 
   article.appendChild(svg);
@@ -268,23 +262,20 @@ const makeSearchCover = (callback) => {
   input.type = "search";
   input.id = "search-bar";
 
+  input.addEventListener("input", () => {
+    if (localStorage.getItem("taal") == "fr") {
+      const newArrayLocations = allLocations.filter((location) =>
+        location.description.toLowerCase().includes(input.value.toLowerCase()),
+      ); // array method, filtert alle objecten waarvan de beschrijving niet gelijk is aan input
 
-    
-  input.addEventListener('input',() =>{
-
-
-
-
-    if(localStorage.getItem('taal') == "fr"){
-          const newArrayLocations = allLocations.filter(location => location.description.toLowerCase().includes(input.value.toLowerCase()))    // array method, filtert alle objecten waarvan de beschrijving niet gelijk is aan input
-    updateLijstInSearchCover(newArrayLocations)
-    }else{
-          const newArrayLocations = allLocations.filter(location => location.beschrijving.toLowerCase().includes(input.value.toLowerCase()))    // array method, filtert alle objecten waarvan de beschrijving niet gelijk is aan input
-    updateLijstInSearchCover(newArrayLocations)
+      updateLijstInSearchCover(newArrayLocations);
+    } else {
+      const newArrayLocations = allLocations.filter((location) =>
+        location.beschrijving.toLowerCase().includes(input.value.toLowerCase()),
+      ); // array method, filtert alle objecten waarvan de beschrijving niet gelijk is aan input
+      updateLijstInSearchCover(newArrayLocations);
     }
-
-
-  })
+  });
 
   article.appendChild(label);
   article.appendChild(input);
@@ -297,126 +288,122 @@ const makeSearchCover = (callback) => {
   searchCover.appendChild(article);
 
   callback();
-
-
-
 };
 
 //functie om de locaties in de search lijst up te daten.
 const updateLijstInSearchCover = (arrayLocations) => {
-  const container = document.getElementById('container-search-items')
-  container.innerHTML="";
+  const container = document.getElementById("container-search-items");
+  container.innerHTML = "";
 
-  for(let locatie of arrayLocations){
-        const lat = locatie.coordonnees_geographiques.lat;
-        const lon = locatie.coordonnees_geographiques.lon;
+  if (arrayLocations.length == 0) {
+    console.log("leeg");
 
-    const card = document.createElement("article");
-    card.classList.add("card");
+    const p = document.createElement("p");
+    p.textContent = `no results found`;
+    container.appendChild(p);
+  } else {
+    for (let locatie of arrayLocations) {
+      const lat = locatie.coordonnees_geographiques.lat;
+      const lon = locatie.coordonnees_geographiques.lon;
 
-    const iframe = document.createElement("iframe");
-    // zet de echte source in dataset.src om ervoor te zorgen dat die op een lazy manier worden geladen met een observer
-    iframe.dataset.src = `https://www.google.com/maps?q=&layer=c&cbll=${lat},${lon}&cbp=11,0,0,0,0&output=svembed`;
+      const card = document.createElement("article");
+      card.classList.add("card");
 
-    iframe.setAttribute("allow", "accelerometer; gyroscope");
-    iframe.setAttribute("allowfullscreen", "true");
+      const iframe = document.createElement("iframe");
+      // zet de echte source in dataset.src om ervoor te zorgen dat die op een lazy manier worden geladen met een observer
+      iframe.dataset.src = `https://www.google.com/maps?q=&layer=c&cbll=${lat},${lon}&cbp=11,0,0,0,0&output=svembed`;
 
-    iframe.width = "350";
-    iframe.height = "250";
-    iframe.style.border = "0";
+      iframe.setAttribute("allow", "accelerometer; gyroscope");
+      iframe.setAttribute("allowfullscreen", "true");
 
-    iframe.classList.add("lazy-iframe");
+      iframe.width = "350";
+      iframe.height = "250";
+      iframe.style.border = "0";
 
-    card.appendChild(iframe);
+      iframe.classList.add("lazy-iframe");
 
-    const divInformatieText = document.createElement("div");
-    divInformatieText.classList.add("informatie-text");
+      card.appendChild(iframe);
 
-    const beschrijvingLocatie = document.createElement("h2");
-    beschrijvingLocatie.textContent = locatie.beschrijving || locatie.description;
-    divInformatieText.appendChild(beschrijvingLocatie);
+      const divInformatieText = document.createElement("div");
+      divInformatieText.classList.add("informatie-text");
 
-    const adres = document.createElement("p");
-    adres.textContent = locatie.adres || locatie.adresse + ", ";
-    divInformatieText.appendChild(adres);
+      const beschrijvingLocatie = document.createElement("h2");
+      beschrijvingLocatie.textContent =
+        locatie.beschrijving || locatie.description;
+      divInformatieText.appendChild(beschrijvingLocatie);
 
-    const postCode = document.createElement("span");
-    postCode.textContent = locatie.code_postal;
-    adres.appendChild(postCode);
+      const adres = document.createElement("p");
+      adres.textContent = locatie.adres || locatie.adresse + ", ";
+      divInformatieText.appendChild(adres);
 
-    const plaats = document.createElement("p");
-    plaats.textContent = locatie.plaats || locatie.lieu;
-    divInformatieText.appendChild(plaats);
+      const postCode = document.createElement("span");
+      postCode.textContent = locatie.code_postal;
+      adres.appendChild(postCode);
 
-    const geolocatie = document.createElement("p");
-    geolocatie.textContent = `${lat}, ${lon}`;
+      const plaats = document.createElement("p");
+      plaats.textContent = locatie.plaats || locatie.lieu;
+      divInformatieText.appendChild(plaats);
 
-    divInformatieText.appendChild(geolocatie);
+      const geolocatie = document.createElement("p");
+      geolocatie.textContent = `${lat}, ${lon}`;
 
-    card.appendChild(divInformatieText);
+      divInformatieText.appendChild(geolocatie);
 
+      card.appendChild(divInformatieText);
 
-    container.appendChild(card);
+      container.appendChild(card);
 
-    observer.observe(iframe); // een observer wordt toegevoegd aan elke iframe wanneer het gemaakt wordt
-    
+      observer.observe(iframe); // een observer wordt toegevoegd aan elke iframe wanneer het gemaakt wordt
+    }
+  }
+};
+
+const checkLocalStorage = () => {
+  if (localStorage.getItem("taal") === null) {
+    localStorage.setItem("taal", "nl");
   }
 
-
-}
-
-const checkLocalStorage = () =>{
-
-  if(localStorage.getItem('taal') === null){
-    localStorage.setItem('taal', 'nl')
+  if (localStorage.getItem("favorites") === null) {
+    localStorage.setItem("favorites", JSON.stringify([]));
   }
-
-  if(localStorage.getItem('favorites') === null){
-    localStorage.setItem('favorites', JSON.stringify([]))
-  }
-
-}
+};
 
 // een observer om ervoor te zorgen dat alle iframes enkel geladen en actief zijn wanneer ze in beeld treden.
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    // voor elke item die we in de observer hebben gezet
-    const iframe = entry.target;
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      // voor elke item die we in de observer hebben gezet
+      const iframe = entry.target;
 
-    if (entry.isIntersecting) {
-      // als de element in beeld is
-      if (!iframe.hasAttribute("src")) {
-        iframe.src = iframe.dataset.src; // zetten we de bron in datasrc in src
+      if (entry.isIntersecting) {
+        // als de element in beeld is
+        if (!iframe.hasAttribute("src")) {
+          iframe.src = iframe.dataset.src; // zetten we de bron in datasrc in src
+        }
+      } else {
+        iframe.removeAttribute("src"); // als de element buiten beeld valt removen we de hele attribute om bugs te vermijden
       }
-    } else {
-      iframe.removeAttribute("src"); // als de element buiten beeld valt removen we de hele attribute om bugs te vermijden
-    }
-  });
-}, {threshold: 0.1,   // laad wanneer 10% van de iframe zichtbaar is
-  rootMargin: "200px"}); //laad de iframe wanneer het 200px van de beeld is
+    });
+  },
+  {
+    threshold: 0.1, // laad wanneer 10% van de iframe zichtbaar is
+    rootMargin: "200px",
+  },
+); //laad de iframe wanneer het 200px van de beeld is
 
 updateMainList(allLocations); // laad de main pagina met alle objecten
 
-
 const buttonResetFilter = document.getElementById("reset-filter");
 buttonResetFilter.addEventListener("click", () => {
-
   const inputFilter = document.getElementById("input-filter-postcode");
   inputFilter.value = "";
   updateMainList(allLocations);
 });
 
-
-
 const buttonOpzoeken = document.getElementById("search-button");
 buttonOpzoeken.addEventListener("click", () => {
-
-  makeSearchCover(() => updateLijstInSearchCover(allLocations)) 
-  
+  makeSearchCover(() => updateLijstInSearchCover(allLocations));
 });
-
-
-
 
 let inputFiltervalue = document.getElementById("input-filter-postcode");
 const filterbutton = document.getElementById("filter");
@@ -424,70 +411,140 @@ const filterbutton = document.getElementById("filter");
 filterbutton.addEventListener("click", () => {
   let input = inputFiltervalue.value;
 
-  if(input >= 1000 && input <= 9999){
-      const resultList = [];
+  if (input >= 1000 && input <= 9999) {
+    const resultList = [];
 
-      for (let element of allLocations) {
-        if (input == element.code_postal) {
-          resultList.push(element);
-        }
+    for (let element of allLocations) {
+      if (input == element.code_postal) {
+        resultList.push(element);
       }
+    }
 
-      updateMainList(resultList);
-  }else{
-    const mainList = document.getElementById('table-container')
+    updateMainList(resultList);
+  } else {
+    const mainList = document.getElementById("table-container");
     mainList.innerHTML = "";
-    mainList.textContent = "A post-code must contains 4 digits."
-    
+    mainList.textContent = "A post-code must contains 4 digits.";
   }
-
-
 });
 
+const buttonTalen = document.querySelectorAll(".language-button");
 
-
-const buttonTalen = document.querySelectorAll('.language-button')
-
-for(let button of buttonTalen){
-  button.addEventListener('click', async ()=>{
-    localStorage.setItem('taal', button.value)
+for (let button of buttonTalen) {
+  button.addEventListener("click", async () => {
+    localStorage.setItem("taal", button.value);
     data = await fetchData();
     allLocations = data.results;
-    updateMainList(allLocations)
+
+    let i = 1;
+
+    for (let location of allLocations) {
+      location.id = i;
+      i++;
+    }
+
+    updateMainList(allLocations);
     checkLanguage();
-
-    
-  })
+  });
 }
 
-const makeFavoriteListCover = () =>{
+const makeFavoriteListCover = () => {
+  const cover = document.createElement("section");
+  cover.classList.add("favorites-cover");
+  document.body.append(cover);
 
-  const cover = document.createElement('section')
-  cover.classList.add('favorites-cover')
-  document.body.append(cover)
+  const article = document.createElement("article");
+  article.classList.add("favorites-list");
+  cover.append(article);
 
-  const article = document.createElement('article')
-  article.classList.add('favorites-list')
-  cover.append(article)
+  const ns = "http://www.w3.org/2000/svg";
 
-  const listFavorites = localStorage.getItem('favorites')
+  // maak de svg
+  const svg = document.createElementNS(ns, "svg");
+  svg.setAttribute("xmlns", ns);
+  svg.setAttribute("height", "40px");
+  svg.setAttribute("width", "40px");
+  svg.setAttribute("viewBox", "0 -960 960 960");
+  svg.setAttribute("fill", "#000000");
+  svg.classList.add("close-favorite");
 
-}
+  // zet de path van de svg
+  const path = document.createElementNS(ns, "path");
+  path.setAttribute(
+    "d",
+    "m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z",
+  );
 
-const buttonFavorites = document.getElementById('favorites')
+  // voeg de element path aan de svg toe
+  svg.appendChild(path);
 
-buttonFavorites.addEventListener('click', () =>{
+  svg.addEventListener("click", () => {
+    cover.remove();
+  });
 
+  article.append(svg);
+
+  const listFavorites = JSON.parse(localStorage.getItem("favorites"));
+
+  for (let favorite of listFavorites) {
+    let locatie = allLocations.find((location) => location.id === favorite);
+
+    const card = document.createElement("article");
+    card.classList.add("card-favorite");
+
+    const iframe = document.createElement("iframe");
+
+    const lat = locatie.coordonnees_geographiques.lat;
+    const lon = locatie.coordonnees_geographiques.lon;
+
+    iframe.src = `https://www.google.com/maps?q=&layer=c&cbll=${lat},${lon}&cbp=11,0,0,0,0&output=svembed`;
+    iframe.setAttribute("allow", "accelerometer; gyroscope");
+    iframe.setAttribute("allowfullscreen", "true");
+    iframe.width = "250";
+    iframe.height = "150";
+    iframe.style.border = "0";
+
+    iframe.classList.add("lazy-iframe");
+
+    card.append(iframe);
+
+    const divExtraInformatie = document.createElement("div");
+    divExtraInformatie.classList.add("extra-info");
+
+    const beschrijving = document.createElement("h3");
+    beschrijving.textContent = locatie.beschrijving || locatie.description;
+    divExtraInformatie.append(beschrijving);
+
+    const adres = document.createElement("p");
+    adres.textContent = locatie.adres || locatie.adresse;
+    divExtraInformatie.append(adres);
+
+    const postCode = document.createElement("span");
+    postCode.textContent = locatie.code_postal;
+    adres.appendChild(postCode);
+
+    const plaats = document.createElement("p");
+    plaats.textContent = locatie.plaats || locatie.lieu;
+    divExtraInformatie.appendChild(plaats);
+
+    const geolocatie = document.createElement("p");
+    geolocatie.textContent = `${lat}, ${lon}`;
+    divExtraInformatie.append(geolocatie);
+
+    card.append(divExtraInformatie);
+    article.append(card);
+  }
+};
+
+const buttonFavorites = document.getElementById("favorites");
+
+buttonFavorites.addEventListener("click", () => {
   makeFavoriteListCover();
-  
-})
+});
 
-const test = document.getElementById('test')
-test.addEventListener('click', () =>{
+const test = document.getElementById("test");
+test.addEventListener("click", () => {
+  localStorage.setItem("favorites", JSON.stringify([]));
 
-  localStorage.setItem('favorites', JSON.stringify([]))
- 
-
-  console.log(localStorage.getItem('favorites'));
-  
-})
+  console.log(localStorage.getItem("favorites"));
+});

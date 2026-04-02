@@ -44,18 +44,35 @@ body {
     height: 100%;
     width: 600px;
     background-color: white;
+    overflow: scroll;
 
+}
+
+.close-favorite{
+    position: absolute;
+    right: 0;
+    background-color: rgb(219, 219, 219);
+    padding: 5px;
+    border-radius: 50% ;
+    border: 1px solid black;
+}
+
+.close-favorite:hover{
+    background-color: silver;
+    cursor: pointer;
 }
 
 .card-favorite {
     display: flex;
-    gap: 75px;
+   
+    gap: 40px;
 
     margin: 40px;
     border: 1px solid black;
     border-radius: 30px;
     width: fit-content;
     padding: 15px;
+    align-items: center;
 
     .extra-info {
         display: flex;
@@ -73,6 +90,18 @@ body {
         margin: 0;
     }
 }
+
+.add-favorite{
+    
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    width: 50px;
+    height: 50px;
+}
+
+
 
 .search-cover {
     position: fixed;
@@ -249,6 +278,7 @@ main {
         .card{
             height: 400px;
             width: 1200px;
+            position: relative;
            
             padding: 30px;
             border-radius: 25px;
