@@ -118,6 +118,8 @@ const updateMainList = (arrayResults) => {
         } else {
           arrayFavorites.push(locatie.id);
           localStorage.setItem("favorites", JSON.stringify(arrayFavorites));
+          path.setAttribute('d', 'm480-120.67-46.67-42q-104.33-95-172.33-164-68-69-108.33-123.5-40.34-54.5-56.5-99.16Q80-594 80-640q0-91.33 61.33-152.67 61.34-61.33 152-61.33 55.34 0 103.34 25.33 48 25.34 83.33 72.67 39.33-49.33 86.33-73.67 47-24.33 100.34-24.33 90.66 0 152 61.33Q880-731.33 880-640q0 46-16.17 90.67-16.16 44.66-56.5 99.16Q767-395.67 699-326.67t-172.33 164l-46.67 42Z')
+          svgFavorite.setAttribute('fill', '#ff0000' )
         }
       
     });
@@ -427,13 +429,40 @@ const makeFavoriteListCover = () => {
 
   article.append(svg);
 
-  const listFavorites = JSON.parse(localStorage.getItem("favorites"));
+  let listFavorites = JSON.parse(localStorage.getItem("favorites"));
 
   for (let favorite of listFavorites) {
     let locatie = allLocations.find((location) => location.id === favorite);
 
     const card = document.createElement("article");
     card.classList.add("card-favorite");
+
+    const svgDelete = document.createElementNS(ns, 'svg')
+        svgDelete.setAttribute("xmlns", ns);
+      svgDelete.setAttribute("height", "30px");
+      svgDelete.setAttribute("width", "30px");
+      svgDelete.setAttribute("viewBox", "0 -960 960 960");
+      svgDelete.setAttribute("fill", "#000000");
+      svgDelete.setAttribute('value', locatie.id)
+
+    const pathDelete = document.createElementNS(ns, 'path')
+    pathDelete.setAttribute('d', "M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" )
+
+    svgDelete.appendChild(pathDelete)
+    svgDelete.classList.add('svg-delete')
+
+    svgDelete.addEventListener('click', () => {
+
+      const idToRemove = Number(svgDelete.getAttribute("value"));
+      listFavorites = listFavorites.filter(locatie => locatie !== idToRemove);
+
+      localStorage.setItem('favorites', JSON.stringify(listFavorites))
+
+      card.remove()
+        
+    })
+
+    card.append(svgDelete)
 
     const iframe = document.createElement("iframe");
 
