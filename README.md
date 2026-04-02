@@ -1,5 +1,7 @@
 # Project Dynamic Web - BrusselsExplorer
 
+Personen die aan dit project hebben gewerkt: Lilian Levano, Bilal Benhammou
+
 ## Projectbeschrijving en functionaliteiten    (Bilal)
 
 ## Gebruikte API's met links
