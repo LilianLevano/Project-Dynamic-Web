@@ -42,7 +42,16 @@ Link naar API: https://opendata.brussels.be/explore/dataset/bruxelles_lieux_cult
 
 ## Gebruikte bronnen          (Samen)
 
-## Taakverdeling             (Lilian)
+ChatGPT om CSS gerelateerde problemen op te lossen en problemen die vanuit concepten komen die we niet in de les hebben behandeld (bijvoorbeeld WebGL). 
+- https://chatgpt.com/share/69ce71f5-aedc-8389-82aa-fae332f9ce58
+- https://chatgpt.com/share/69ce720d-771c-8385-a2df-b5cafc041092
+- https://chatgpt.com/share/69ce72d1-75ac-8395-b661-700861224aef --> De API stuurt een link naar Google Street View die we niet in Iframes kunnen gebruiken, waardoor we een link moest zoeken die we wel konden gebruiken waar we de geolocalisatie gebruiken, wat voor veel WebGL errors en warnings zorgde.
+
+Unsplash voor de background header (https://unsplash.com/fr/photos/portail-en-beton-brun-m39OKAexaqo)
+
+Google Icons and Fonts voor de verschillende SVG's en Fonts.
+
+## Taakverdeling 
 
 | Dag       | Lilian                                                                 | Bilal                                                                 | Samen                                      |
 |-----------|------------------------------------------------------------------------|----------------------------------------------------------------------|-------------------------------------------|
