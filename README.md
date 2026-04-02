@@ -43,3 +43,10 @@ Link naar API: https://opendata.brussels.be/explore/dataset/bruxelles_lieux_cult
 ## Gebruikte bronnen          (Samen)
 
 ## Taakverdeling             (Lilian)
+
+| Dag       | Lilian                                                                 | Bilal                                                                 | Samen                                      |
+|-----------|------------------------------------------------------------------------|----------------------------------------------------------------------|-------------------------------------------|
+| Dinsdag   | Basis HTML en CSS aanleggen (met placeholder)                         | API mogelijkheden opzoeken (hoe werkt de url, ...)                  | User stories / backlog <br> Opmaak website brainstormen                   |
+| Woensdag  | Verwerk data in de lijst <br> Zoekmethode opstellen                  | Fetch API + JSON <br> Filter optie <br> Responsive design           | Github samen leren (voormiddag)           |
+| Donderdag | Favoriete locaties (localStorage) <br> Formulier validatie            | Responsive design <br> Sorteer mogelijkheid <br> Foutmeldingen       | Commentaar, backlog afwerken, README <br> Samen denken op hoe we de code clean kunnen maken    |
+| Vrijdag   |                                                                        |                                                                      | README afmaken, laatste details checken                            |
