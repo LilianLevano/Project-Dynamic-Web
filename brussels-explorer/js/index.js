@@ -206,7 +206,9 @@ const makeSearchCover = (callback) => {
     
   input.addEventListener('input',() =>{
 
+  
     const newArrayLocations = allLocations.filter(location => location.beschrijving.toLowerCase().includes(input.value.toLowerCase()))    // array method, filtert alle objecten waarvan de beschrijving niet gelijk is aan input
+    
     updateLijstInSearchCover(newArrayLocations)
   })
 
@@ -226,7 +228,7 @@ const makeSearchCover = (callback) => {
 
 };
 
-//functie om de locaties in de seach lijst up te daten.
+//functie om de locaties in de search lijst up te daten.
 const updateLijstInSearchCover = (arrayLocations) => {
   const container = document.getElementById('container-search-items')
   container.innerHTML="";
