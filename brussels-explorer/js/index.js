@@ -89,6 +89,10 @@ checkLanguage();
 // functie om de lijst van locaties op de main pagina up te daten. Het wordt bij het laden van de site automatisch opgeroept.
 
 const updateMainList = (arrayResults) => {
+
+  console.log(arrayResults);
+  
+
   const sectionCardContainer = document.getElementById("table-container");
   sectionCardContainer.innerHTML = "";
 
@@ -110,15 +114,23 @@ const updateMainList = (arrayResults) => {
   svgFavorite.setAttribute("width", "35px");
   svgFavorite.setAttribute("viewBox", "0 -960 960 960");
   svgFavorite.setAttribute("fill", "#e3e3e3");
-  svgFavorite.classList.add("close-search");
+  svgFavorite.classList.add("add-favorite");
   svgFavorite.setAttribute('value', locatie.id)
 
 
   const path = document.createElementNS(ns, "path");
-  path.setAttribute(
-    "d",
-    "m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z",
+
+    if(JSON.parse(localStorage.getItem('favorites')).includes(locatie.id)){
+
+      path.setAttribute('d', 'm480-120.67-46.67-42q-104.33-95-172.33-164-68-69-108.33-123.5-40.34-54.5-56.5-99.16Q80-594 80-640q0-91.33 61.33-152.67 61.34-61.33 152-61.33 55.34 0 103.34 25.33 48 25.34 83.33 72.67 39.33-49.33 86.33-73.67 47-24.33 100.34-24.33 90.66 0 152 61.33Q880-731.33 880-640q0 46-16.17 90.67-16.16 44.66-56.5 99.16Q767-395.67 699-326.67t-172.33 164l-46.67 42Z')
+      svgFavorite.setAttribute('fill', "#ff0000" )
+
+  }else{
+    path.setAttribute("d","m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z",
   );
+  }
+
+
 
 
   svgFavorite.appendChild(path);
@@ -126,6 +138,8 @@ const updateMainList = (arrayResults) => {
 
   svgFavorite.addEventListener("click", () => {
     
+    
+
     let arrayFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
 
@@ -453,6 +467,14 @@ for(let button of buttonTalen){
     localStorage.setItem('taal', button.value)
     data = await fetchData();
     allLocations = data.results;
+
+    let i = 1
+
+    for(let location of allLocations){
+      location.id = i;
+      i++
+    }
+
     updateMainList(allLocations)
     checkLanguage();
 
@@ -470,7 +492,87 @@ const makeFavoriteListCover = () =>{
   article.classList.add('favorites-list')
   cover.append(article)
 
-  const listFavorites = localStorage.getItem('favorites')
+    const ns = "http://www.w3.org/2000/svg";
+
+  // maak de svg
+  const svg = document.createElementNS(ns, "svg");
+  svg.setAttribute("xmlns", ns);
+  svg.setAttribute("height", "40px");
+  svg.setAttribute("width", "40px");
+  svg.setAttribute("viewBox", "0 -960 960 960");
+  svg.setAttribute("fill", "#000000");
+  svg.classList.add("close-favorite");
+
+  // zet de path van de svg
+  const path = document.createElementNS(ns, "path");
+  path.setAttribute(
+    "d",
+    "m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z",
+  );
+
+  // voeg de element path aan de svg toe
+  svg.appendChild(path);
+
+  svg.addEventListener("click", () => {
+    cover.remove();
+ 
+  });
+
+  article.append(svg)
+
+  const listFavorites = JSON.parse(localStorage.getItem('favorites')) 
+
+  for(let favorite of listFavorites){
+    let locatie = allLocations.find(location => location.id === favorite)
+
+    const card = document.createElement('article')
+    card.classList.add('card-favorite')
+
+    const iframe = document.createElement('iframe')
+  
+    const lat = locatie.coordonnees_geographiques.lat
+    const lon = locatie.coordonnees_geographiques.lon
+
+    iframe.src = `https://www.google.com/maps?q=&layer=c&cbll=${lat},${lon}&cbp=11,0,0,0,0&output=svembed`;
+    iframe.setAttribute("allow", "accelerometer; gyroscope");
+    iframe.setAttribute("allowfullscreen", "true");
+    iframe.width = "250";
+    iframe.height = "150";
+    iframe.style.border = "0";
+
+    iframe.classList.add("lazy-iframe");
+
+    card.append(iframe)
+
+
+    const divExtraInformatie = document.createElement('div')
+    divExtraInformatie.classList.add('extra-info')
+
+    const beschrijving = document.createElement('h3')
+    beschrijving.textContent = locatie.beschrijving || locatie.description
+    divExtraInformatie.append(beschrijving)
+
+    const adres = document.createElement('p')
+    adres.textContent = locatie.adres || locatie.adresse
+    divExtraInformatie.append(adres)
+
+        const postCode = document.createElement("span");
+    postCode.textContent = locatie.code_postal;
+    adres.appendChild(postCode);
+
+    const plaats = document.createElement("p");
+    plaats.textContent = locatie.plaats || locatie.lieu;
+    divExtraInformatie.appendChild(plaats);
+
+    const geolocatie = document.createElement("p");
+    geolocatie.textContent = `${lat}, ${lon}`;
+    divExtraInformatie.append(geolocatie)
+
+
+    card.append(divExtraInformatie)
+    article.append(card)
+    
+  }
 
 }
 
