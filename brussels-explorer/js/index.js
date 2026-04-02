@@ -38,7 +38,7 @@ const fetchData = async (withAllLanguage = false) => {
 
 // sfg
 
-if (localStorage.getItem("favorites" === null)) {
+if (localStorage.getItem("favorites") === null) {
   localStorage.setItem("favorites", JSON.stringify([]));
 }
 
