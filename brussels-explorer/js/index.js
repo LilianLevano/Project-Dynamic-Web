@@ -54,7 +54,7 @@ for (let locatie of allLocations) {
 
 const taal = localStorage.getItem("taal");
 allLocations.sort((a, b) =>
-  (taal === "nl" ? a.beschrijving : a.description).localeCompare(
+  (taal === "nl" ? a.beschrijving : a.description).localeCompare(     // a.localeCompare(b) -- localCompare = 
     taal === "nl" ? b.beschrijving : b.description,
   ),
 );
