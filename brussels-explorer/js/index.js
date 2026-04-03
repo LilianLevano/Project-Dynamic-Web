@@ -476,6 +476,8 @@ const makeFavoriteListCover = () => {
 
   let listFavorites = JSON.parse(localStorage.getItem("favorites"));
 
+  let taal = localStorage.getItem('taal')
+
   for (let favorite of listFavorites) {
     let locatie = allLocations.find((location) => location.id === favorite);
 
@@ -529,12 +531,13 @@ const makeFavoriteListCover = () => {
     const divExtraInformatie = document.createElement("div");
     divExtraInformatie.classList.add("extra-info");
 
-    const beschrijving = document.createElement("h3");
-    beschrijving.textContent = locatie.beschrijving || locatie.description;
-    divExtraInformatie.append(beschrijving);
+  const beschrijvingLocatie = document.createElement("h3");
+  beschrijvingLocatie.textContent = taal === "nl" ? locatie.beschrijving : locatie.description;
+  divExtraInformatie.appendChild(beschrijvingLocatie);
 
     const adres = document.createElement("p");
-    adres.textContent = locatie.adres || locatie.adresse;
+    adres.textContent = taal === "nl" ? locatie.adres : locatie.adresse;
+    adres.textContent += ", "
     divExtraInformatie.append(adres);
 
     const postCode = document.createElement("span");
@@ -542,7 +545,7 @@ const makeFavoriteListCover = () => {
     adres.appendChild(postCode);
 
     const plaats = document.createElement("p");
-    plaats.textContent = locatie.plaats || locatie.lieu;
+    plaats.textContent = taal === "nl" ? locatie.plaats : locatie.lieu;
     divExtraInformatie.appendChild(plaats);
 
     const geolocatie = document.createElement("p");
