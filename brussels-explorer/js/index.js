@@ -59,7 +59,7 @@ allLocations.sort((a, b) =>
   ),
 );
 
-console.log(allLocations);
+
 
 const checkLanguage = () => {
   const language = localStorage.getItem("taal");
@@ -88,7 +88,7 @@ checkLanguage();
 
 // functie om de lijst van locaties op de main pagina up te daten. Het wordt bij het laden van de site automatisch opgeroept.
 const updateMainList = (arrayResults) => {
-  console.log(arrayResults);
+  
 
   const sectionCardContainer = document.getElementById("table-container");
   sectionCardContainer.innerHTML = "";
@@ -315,7 +315,7 @@ const makeCard = (locatie, lat, lon) => {
   divInformatieText.appendChild(beschrijvingLocatie);
 
   const adres = document.createElement("p");
-  adres.textContent = taal === "nl" ? locatie.adres : locatie.adresse + ", ";
+  adres.textContent = taal === "nl" ? locatie.adres + ", " : locatie.adresse + ", ";
   divInformatieText.appendChild(adres);
 
   const postCode = document.createElement("span");
@@ -560,9 +560,3 @@ buttonFavorites.addEventListener("click", () => {
   makeFavoriteListCover();
 });
 
-const test = document.getElementById("test");
-test.addEventListener("click", () => {
-  localStorage.setItem("favorites", JSON.stringify([]));
-
-  console.log(localStorage.getItem("favorites"));
-});
