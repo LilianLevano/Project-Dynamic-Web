@@ -53,7 +53,7 @@ Link naar API: https://opendata.brussels.be/explore/dataset/bruxelles_lieux_cult
 ![artikels scrolling](/brussels-explorer/images/screenshots_readme/artikels_scrolling.png)
 ![favoriete vensters](/brussels-explorer/images/screenshots_readme/favorite_venster.png)
 
-## Gebruikte bronnen          (Samen)
+## Gebruikte bronnen   
 
 ChatGPT om CSS gerelateerde problemen op te lossen en problemen die vanuit concepten komen die we niet in de les hebben behandeld (bijvoorbeeld WebGL). 
 - https://chatgpt.com/share/69ce71f5-aedc-8389-82aa-fae332f9ce58
